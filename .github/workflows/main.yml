@@ -10,10 +10,10 @@ jobs:
 
    steps:
    - name: Checkout code
-     uses: actions/checkout@v2
+     uses: actions/checkout@v4.1.1
 
    - name: Set up Python
-     uses: actions/setup-python@v2
+     uses: actions/setup-python@v5.0.0
      with:
        python-version: 3.8
 
@@ -21,4 +21,12 @@ jobs:
      run: pip install bandit
 
    - name: Run Bandit Scan
-     run: bandit -ll -ii -r .
+     run: bandit -ll -ii -r . -f json -o bandit-report.json
+
+
+   - name: Upload artifact
+     uses: actions/upload-artifact@v3
+     if: always() //executes everytime
+     with:
+       name: bandit-findings
+       path: bandit-report.json
