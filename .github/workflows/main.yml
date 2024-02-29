@@ -55,7 +55,7 @@ jobs:
 
          #docker login
          export D_PASS=${{ secrets.DOCKER_PASS_CI_DEVSECOPS_EX }} #github recommends to save in an environment variable
-         echo $D_PASS | docker login ghcr.io -u ${{ secrets.DOCKER_USER_CI_DEVSECOPS_EX }} --password-stdin
+         echo $D_PASS | docker login -u ${{ secrets.DOCKER_USER_CI_DEVSECOPS_EX }} --password-stdin
          
          docker scout quickview
          docker scout cves
