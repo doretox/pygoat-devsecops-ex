@@ -55,7 +55,7 @@ jobs:
 
          #docker login
          export D_PASS=${{ secrets.DOCKER_PASS }} #github recommends to save in an environment variable
-         echo $D_PASS | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+         echo $D_PASS | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
          
          docker scout quickview
          docker scout cves
