@@ -54,10 +54,8 @@ jobs:
          curl -sSfL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh | sh -s --
 
          #docker login
-         docker login -u ${{ secrets.DOCKER_USER_CI_DEVSECOPS_EX }} -p ${{ secrets.DOCKER_PASS_CI_DEVSECOPS_EX }}
+         echo ${{ secrets.DOCKER_PASS_CI_DEVSECOPS_EX }} | docker login -u ${{ secrets.DOCKER_USER_CI_DEVSECOPS_EX }} --password-stdin
          
          docker scout quickview
          docker scout cves
-   
-      
     
